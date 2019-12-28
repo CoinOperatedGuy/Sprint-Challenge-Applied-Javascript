@@ -67,7 +67,7 @@ function createArticle(headline, authorPhoto, authorName) {
     author.appendChild(name);
     card.classList.add('card');
     title.classList.add('headline');
-    author.classList.add('authos');
+    author.classList.add('author');
     photo.classList.add('img-container');
     image.setAttribute('src', authorPhoto);
     title.textContent = headline;
