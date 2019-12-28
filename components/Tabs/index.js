@@ -10,45 +10,22 @@
 
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
     .then((response) => {
-        const topics = response.data;
-        console.log(topics);
-        const list = document.querySelector('.topics');
-        list.appendChild(createTab(topics));
-
-        function createTab(topicsArray) {
-            const tab = document.createElement('div');
-            tab.classList.add('tab');
-            tab.textContent = topicsArray.forEach((item) => {
-                tab.textContent = item;
-            });
-            // topicsArray.forEach((item) => {
-            //     const tab = document.createElement('div');
-            //     tab.classList.add('tab');
-            //     tab.textContent = item;
-            //     return tab;
-            // });
-
-            // return tab;
-            // };
-            // list.appendChild(createTab(topics));
-            return tab;
-        }
+        const topics = response.data.topics;
+        // console.log(topics);
+        const list = document.querySelector('div.topics');
+        // console.log(list);
+        topics.forEach((item) => {
+            list.appendChild(createTab(item));
+        })
     })
     .catch((err) => {
         console.log(err);
     });
 
-// const list = document.querySelector('.topics');
-// list.appendChild(createTab(topics));
 
-// function createTab(topicsArray) {
-//     // const tab = document.createElement('div');
-//     // tab.classList.add('tab');
-//     topicsArray.forEach((item) => {
-//         const tab = document.createElement('div');
-//         tab.classList.add('tab');
-//         tab.textContent = item;
-//     });
-
-//     return tab;
-// };
+function createTab(item) {
+    const tab = document.createElement('div');
+    tab.classList.add('tab');
+    tab.textContent = item;
+    return tab;
+};

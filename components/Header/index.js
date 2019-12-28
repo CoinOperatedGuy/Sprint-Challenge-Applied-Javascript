@@ -25,7 +25,7 @@ function Header() {
     temp.classList.add('temp');
     date.textContent = 'MARCH 28, 2019';
     hOne.textContent = 'Lambda Times';
-    temp.textContent = '98 degrees';
+    temp.textContent = '98°';
 
     return bigHead;
 }
