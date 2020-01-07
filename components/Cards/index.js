@@ -17,3 +17,61 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+const url = 'https://lambda-times-backend.herokuapp.com/articles';
+axios.get(url)
+    .then((response) => {
+        // console.log(response.data.articles)
+        const js = response.data.articles.javascript;
+        console.log(js);
+        const bs = response.data.articles.bootstrap;
+        console.log(bs);
+        const tech = response.data.articles.technology;
+        console.log(tech);
+        const jquery = response.data.articles.jquery;
+        console.log(jquery);
+        const node = response.data.articles.node;
+        console.log(node);
+        const cards = document.querySelector('.cards-container');
+        console.log(cards);
+        js.forEach((item) => {
+            cards.appendChild(createArticle(item.headline, item.authorPhoto, item.authorName));
+        });
+        bs.forEach((item) => {
+            cards.appendChild(createArticle(item.headline, item.authorPhoto, item.authorName));
+        });
+        tech.forEach((item) => {
+            cards.appendChild(createArticle(item.headline, item.authorPhoto, item.authorName));
+        });
+        jquery.forEach((item) => {
+            cards.appendChild(createArticle(item.headline, item.authorPhoto, item.authorName));
+        });
+        node.forEach((item) => {
+            cards.appendChild(createArticle(item.headline, item.authorPhoto, item.authorName));
+        });
+    })
+    .catch((err) => {
+        console.log(err)
+    });
+
+function createArticle(headline, authorPhoto, authorName) {
+    const card = document.createElement('div');
+    const title = document.createElement('div');
+    const author = document.createElement('div');
+    const photo = document.createElement('div');
+    const image = document.createElement('img');
+    const name = document.createElement('span');
+    card.appendChild(title);
+    card.appendChild(author);
+    author.appendChild(photo);
+    photo.appendChild(image);
+    author.appendChild(name);
+    card.classList.add('card');
+    title.classList.add('headline');
+    author.classList.add('author');
+    photo.classList.add('img-container');
+    image.setAttribute('src', authorPhoto);
+    title.textContent = headline;
+    name.textContent = authorName;
+
+    return card;
+}
